@@ -1,9 +1,12 @@
 package hello.hello_spring;
 
 
+import hello.hello_spring.repository.JpaMemberRepository;
 import hello.hello_spring.repository.MemberRepository;
 import hello.hello_spring.repository.MemoryMemberRepository;
 import hello.hello_spring.service.MemberService;
+import jakarta.persistence.EntityManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,14 +15,34 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SpringConfig {
 
-    @Bean
-    public MemberService memberService() {
-        //memberRepository 엮어주기
-        return new MemberService(memberRepository());
+    private final MemberRepository memberRepository;
+
+    public SpringConfig(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
 
     @Bean
-    public MemberRepository memberRepository(){
-        return new MemoryMemberRepository();
+    public MemberService memberService() {
+        return new MemberService(memberRepository);
     }
+//
+////    private EntityManager em;
+//    private final MemberRepository memberRepository;
+//
+//    @Autowired //생성자가 하나인 경우 생략가능
+//    public SpringConfig(MemberRepository memberRepository) {
+//        //this.em = em;
+//        this.memberRepository = memberRepository;
+//    }
+//
+//    @Bean
+//    public MemberService memberService() {
+//        //memberRepository 엮어주기
+//        return new MemberService(memberRepository);
+//    }
+
+//    @Bean
+//    public MemberRepository memberRepository(){
+////        return new JpaMemberRepository(em);
+//    }
 }

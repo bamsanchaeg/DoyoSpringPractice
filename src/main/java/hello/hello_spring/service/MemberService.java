@@ -7,12 +7,14 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 //비즈니스에 의존적으로 설계를 한다
 //테스트 자동 설계 단축키 : cmd + shift + T
 //어노테이션이 없다면 스프링이 인식을 할 수 없다(순수 자바 코드이기 떄문에)
 
 @Service
+@Transactional // 트랜젝션이란...?
 public class MemberService {
 
     //테스트 코드의 DB 주소가 다른 것을 대비해 생성자를 내부에 만든다.
