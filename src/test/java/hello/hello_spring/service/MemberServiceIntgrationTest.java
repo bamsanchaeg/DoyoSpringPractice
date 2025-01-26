@@ -9,7 +9,6 @@ import hello.hello_spring.repository.MemoryMemberRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,12 +16,10 @@ import org.springframework.transaction.annotation.Transactional;
 //통합테스트 어노테이션
 @SpringBootTest
 @Transactional
-class MemberServiceIntgrationTest {
+class MemberServiceIntegrationTest {
 
     @Autowired MemberService memberService;
-
-    @Autowired
-    @Qualifier("springDataJpaMemberRepository")MemberRepository memberRepository;
+    @Autowired MemberRepository memberRepository;
 
     @BeforeEach
     public void beforeEach(){
@@ -61,7 +58,4 @@ class MemberServiceIntgrationTest {
         assertThrows(IllegalStateException.class, () -> memberService.join(member2));
     }
 
-    @Test
-    void findOne() {
-    }
 }

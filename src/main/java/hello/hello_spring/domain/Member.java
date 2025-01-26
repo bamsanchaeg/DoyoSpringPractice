@@ -8,14 +8,13 @@ import org.springframework.data.annotation.Id;
 @Entity
 public class Member {
 
+    @jakarta.persistence.Id
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // 기본 키 자동 생성
-    private Long id;
-    private String name;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id; // Primary key@Id
 
-    public Long getId() {
-        return id;
-    }
+
+    private String name;
 
     public String getName() {
         return name;
@@ -29,4 +28,8 @@ public class Member {
         this.id = id;
     }
 
+    public Long getId() {
+        return id;
+    }
 }
+
