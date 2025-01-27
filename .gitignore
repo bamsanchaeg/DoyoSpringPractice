@@ -46,4 +46,4 @@ out/
 /build.gradle
 
 ### Mac OS ###
-.DS_Store
+.DS_Store.DS_Store
