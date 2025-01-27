@@ -44,3 +44,6 @@ out/
 
 # Ignore build.gradle
 /build.gradle
+
+### Mac OS ###
+.DS_Store
